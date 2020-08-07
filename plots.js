@@ -89,7 +89,7 @@ function buildCharts(sample) {
       var layout = {
         showlegend: false,
         height: 600,
-        width: 1200
+       
       };
       
       Plotly.newPlot('bubble', data, layout);
