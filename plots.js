@@ -11,10 +11,7 @@ function init() {
         .property("value", sample)
     });
       
-      // Default 940 on build
-      var defaultValue = sampleNames[0];
-      buildMetadata(defaultValue);
-      buildCharts(defaultValue);
+  
     }
 )};
   
@@ -44,6 +41,22 @@ function init() {
     
     
     });
+function buildCharts(sample) {
+  d3.json("samples.json").then((data) => {
+    var samples = data.samples;
+    var filter = samples.filter(object => object.id.toString() === sample);
+    var result = filter[0];
+    var sample_values = result.sample_values;
+    var otu_ids = result.otu_ids;
+    var otu_labels = result.otu_labels;
+    var metadata = data.metadata;
+    var resultArray = metadata.filter(sampleObj => sampleObj.id == sample);
+    var gaugeValue = resultArray[0];
+
+
+
+
+
     var trace = {
       x: ["nonalcoholic beer", "nonalcoholic wine", "nonalcoholic martini", "nonalcoholic margarita", "ice tea", "nonalcoholic rum & coke", "nonalcoholic mai tai", "nonalcoholic gin & tonic"],
       y: [22.7, 17.1, 9.9, 8.7, 7.2, 6.1, 6.0, 4.6],
