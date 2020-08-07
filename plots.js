@@ -88,7 +88,7 @@ function buildCharts(sample) {
       var data = [trace1];
       var layout = {
         showlegend: false,
-        height: 600,
+        
        
       };
       
