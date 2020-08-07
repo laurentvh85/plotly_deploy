@@ -10,6 +10,10 @@ function init() {
           .text(sample)
           .property("value", sample);
       });
+       // Default 940 on build
+       var defaultValue = sampleNames[0];
+       buildMetadata(defaultValue);
+       buildCharts(defaultValue);
   })}
   
   init();
