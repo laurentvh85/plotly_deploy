@@ -11,36 +11,41 @@ function init() {
         .property("value", sample)
     });
       
-  
+      // Default 940 on build
+      var defaultValue = sampleNames[0];
+      buildMetadata(defaultValue);
+      buildCharts(defaultValue);
     }
 )};
-  
-  init();
 
-  function optionChanged(newSample) {
-    buildMetadata(newSample);
-    buildCharts(newSample);
-  }
+init();
 
-  function buildMetadata(sample) {
-    d3.json("samples.json").then((data) => {
-      var metadata = data.metadata;
-      var resultArray = metadata.filter(sampleObj => sampleObj.id == sample);
-      var result = resultArray[0];
-      var PANEL = d3.select("#sample-metadata");
-  
-      PANEL.html("");
-      PANEL.append("h6").text("ID - " + result.id);
-      PANEL.append("h6").text("Ethnicity - " + result.ethnicity);
-      PANEL.append("h6").text("Gender - " + result.gender);
-      PANEL.append("h6").text("Age - " + result.age);
-      PANEL.append("h6").text("Location - " + result.location);
-      PANEL.append("h6").text("BBTYPE - " + result.bbtype);
-      PANEL.append("h6").text("WFREQ - " + result.wfreq);
-    
-    
-    
-    });
+
+function optionChanged(newSample) {
+  buildMetadata(newSample);
+  buildCharts(newSample);
+}
+
+function buildMetadata(sample) {
+  d3.json("samples.json").then((data) => {
+    var metadata = data.metadata;
+    var resultArray = metadata.filter(sampleObj => sampleObj.id == sample);
+    var result = resultArray[0];
+    var PANEL = d3.select("#sample-metadata");
+
+    PANEL.html("");
+    PANEL.append("h6").text(["id: " + result.id]);
+    PANEL.append("h6").text(["ethnicity: " + result.ethnicity]);
+    PANEL.append("h6").text(["gender: " + result.gender]);
+    PANEL.append("h6").text(["age: " + result.age]);
+    PANEL.append("h6").text(["location: " + result.location]);
+    PANEL.append("h6").text(["bbtype: " + result.bbtype]);
+    PANEL.append("h6").text(["wfreq: " + result.wfreq]);
+  });
+}
+
+
+
 //Build Charts
 function buildCharts(sample) {
   d3.json("samples.json").then((data) => {
