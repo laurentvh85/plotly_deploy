@@ -10,6 +10,11 @@ function init() {
           .text(sample)
           .property("value", sample);
       });
+      // startup display for 940
+      var idDefault = sampleNames[0];
+      buildMetadata(idDefault);
+      buildCharts(idDefault);
+
   })}
   
   init();
