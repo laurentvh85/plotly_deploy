@@ -10,11 +10,6 @@ function init() {
           .text(sample)
           .property("value", sample);
       });
-      // startup display for 940
-      var idDefault = sampleNames[0];
-      buildMetadata(idDefault);
-      buildCharts(idDefault);
-
   })}
   
   init();
@@ -43,10 +38,6 @@ function init() {
     
     
     });
-
-    function change_label(id) {
-      return "otu" + id;
-      
     var trace = {
       x: ["nonalcoholic beer", "nonalcoholic wine", "nonalcoholic martini", "nonalcoholic margarita", "ice tea", "nonalcoholic rum & coke", "nonalcoholic mai tai", "nonalcoholic gin & tonic"],
       y: [22.7, 17.1, 9.9, 8.7, 7.2, 6.1, 6.0, 4.6],
@@ -59,4 +50,5 @@ function init() {
       yaxis: { title: "% of Drinks Ordered"}
      };
      Plotly.newPlot("plotArea", data, layout);
+  
   }
