@@ -122,35 +122,13 @@ function buildCharts(sample) {
               { range: [7, 8], color: "red" },
               { range: [8, 9], color: "darkred" },
               { range: [9, 10], color: "orange" },
-            
             ],
-            
           }
         }
       ;
       var data = [trace3];
       var layout = { width: 600, height: 450, margin: { t: 0, b: 0 } };
       Plotly.newPlot('gauge', data, layout);
-      
-      
-      
-      
-      
-      
-      
-      
-      
-
-
-
-
-
-
-
-
-    
-
-
       
   });
 }
