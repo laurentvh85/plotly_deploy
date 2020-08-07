@@ -55,6 +55,12 @@ function buildCharts(sample) {
       var otu_ids = result.otu_ids;
       var otu_labels = result.otu_labels;
       var sample_values = result.sample_values;
+      //data for gauge
+      var metadata = data.metadata;
+      var resultArray = metadata.filter(sampleObj => sampleObj.id == sample);
+      var gaugeData = resultArray[0];
+
+
 
      //Bar Chart
       var trace = {
@@ -66,7 +72,7 @@ function buildCharts(sample) {
       };
       var data = [trace];
       var layout = {
-         title: 'Top 10',
+         title: 'Top 10 Bacteria',
          margin: { l: 100, r: 100, t: 100, b: 100 }
       };
       Plotly.newPlot("bar", data, layout);
@@ -74,7 +80,7 @@ function buildCharts(sample) {
 
       // bubble chart
 
-      var trace1 = {
+      var trace2 = {
         x: otu_ids,
         y: sample_values,
         text: otu_labels,
@@ -85,14 +91,66 @@ function buildCharts(sample) {
         }
       };
       
-      var data = [trace1];
+      var data = [trace2];
       var layout = {
         showlegend: false,
         height: 600,
-        width: 1000
+        width: 1200
       };
       
       Plotly.newPlot('bubble', data, layout);
 
+
+      //Gauge Chart
+      var trace3 = 
+        {
+          domain: { x: [0, 1], y: [0, 1] },
+          value: gaugeData.wfreq,
+          title: { text: "Belly Button Washing Frequency " },
+          type: "indicator",
+          mode: "gauge+number",
+          gauge: {
+            axis: { range: [0, 9] },
+            steps: [
+              { range: [0, 1], color: "cyan" },
+              { range: [1, 2], color: "lightgray" },
+              { range: [2, 3], color: "gray" },
+              { range: [3, 4], color: "lightblue" },
+              { range: [4, 5], color: "blue" },
+              { range: [5, 6], color: "darkblue" },
+              { range: [6, 7], color: "lightred" },
+              { range: [7, 8], color: "red" },
+              { range: [8, 9], color: "darkred" },
+              { range: [9, 10], color: "orange" },
+            
+            ],
+            
+          }
+        }
+      ;
+      var data = [trace3];
+      var layout = { width: 600, height: 450, margin: { t: 0, b: 0 } };
+      Plotly.newPlot('gauge', data, layout);
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+    
+
+
+      
   });
 }
