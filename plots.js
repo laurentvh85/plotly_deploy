@@ -88,8 +88,6 @@ function buildCharts(sample) {
       var data = [trace1];
       var layout = {
         showlegend: false,
-        
-       
       };
       
       Plotly.newPlot('bubble', data, layout);
